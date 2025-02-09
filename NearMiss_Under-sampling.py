@@ -1,23 +1,20 @@
-
 import pandas as pd
 import numpy as np
 import os
 
-# import SMOTE for sampling
-from imblearn.over_sampling import SMOTE, ADASYN  
-
+# import NearMiss  for sampling
+from imblearn.under_sampling import NearMiss
 
 
 Target_file_loc = r"E:\Cic-DDos2019 Original\03-11\Portmap_Pre.csv"
 
 #Target_file_loc = r"E:\Cic-DDos2019 Original\03-11\NetBIOS_Pre.csv"
 
-#Target_file_loc = r"E:\Cic-DDos2019 Original\03-11\MSSQL_Pre.csv" 
+#Target_file_loc = r"E:\Cic-DDos2019 Original\03-11\MSSQL_Pre.csv"
 
 #Target_file_loc = r"E:\Cic-DDos2019 Original\03-11\Syn_Pre.csv"
 
-
-#**************************************  
+# **************************************  
 
 ## Reading a CSV file with low_memory set to False
 
@@ -45,15 +42,19 @@ print("analyze class distribution ", Data_target_df.groupby("Label").size())
 
 print(" **************************************")
 
-
 ################################################################
 
 x=Data_target_df.drop(["Label"],axis=1)
 y=Data_target_df["Label"]
 
 
-smote=SMOTE(sampling_strategy='minority') 
-x,y=smote.fit_resample(x,y)
+# Set up the undersampling method
+undersampler = NearMiss(version=1, n_neighbors=3)
+
+
+# Apply the transformation to the dataset
+x, y = undersampler.fit_resample(x, y)
+
 y.value_counts()
 
 print(y.value_counts())
@@ -62,13 +63,15 @@ print(y.value_counts())
 # inner join
 
 final_df = pd.concat([x, y], axis=1, join='inner') 
- 
+
 ###################################################################
 
-# save Balaced dataframe to new location .. 
+# save Balaced dataframe to new location
+
 final_df.to_csv(
-        r"E:\Cic-DDos2019 Original\03-11\Portmap_balanced.csv",
+        r"E:\Cic-DDos2019 Original\03-11\Portmap_undersampling.csv",
         index=False)
+
 
 
 
