@@ -83,12 +83,19 @@ class NetworkIntrusionEvaluator:
             data = pd.read_csv(file_path)
             # Select relevant features for DDoS detection
             features = [
-                'Packet Length Mean',
-                'Average Packet Size', 
-                'Bwd Packet Length Min',
-                'Fwd Packets/s',
-                'Min Packet Length',
-                'Down/Up Ratio',
+                #'Packet Length Mean',
+                #'Average Packet Size', 
+                #'Bwd Packet Length Min',
+                #'Fwd Packets/s',
+                #'Min Packet Length',
+                #'Down/Up Ratio',
+                #'Label'
+                'Packet_Length_Mean',
+                'Average_Packet_Size',
+                'Bwd_Packet_Length_Min',
+                'Fwd_Packets_per_second',
+                'Min_Packet_Length',
+                'Down_Up_Ratio',   
                 'Label'
             ]
             # Filter available features
@@ -365,7 +372,7 @@ if __name__ == "__main__":
 
     #data_path = r"E:\Cic-DDos2019 Original\03-11\Portmap_Pre.csv"
     #data_path = r"E:\Cic-DDos2019 Original\03-11\Portmap_balanced.csv" 
-    data_path = r"E:\Cic-DDos2019 Original\03-11\Portmap_undersampling.csv"
+    #data_path = r"E:\Cic-DDos2019 Original\03-11\Portmap_undersampling.csv"
  
     #data_path = r"E:\Cic-DDos2019 Original\03-11\NetBIOS_Pre.csv" 
     #data_path = r"E:\Cic-DDos2019 Original\03-11\NetBIOS_balanced.csv"
@@ -374,6 +381,19 @@ if __name__ == "__main__":
     #data_path = r"E:\Cic-DDos2019 Original\03-11\Syn_Pre.csv"
     #data_path = r"E:\Cic-DDos2019 Original\03-11\Syn_balanced.csv"
     #data_path = r"E:\Cic-DDos2019 Original\03-11\Syn_undersampling.csv"
+
+    #data_path = r"E:\SDN-DDoS_Traffic_Dataset from Mendeley\SDN-DDoS_With_CIC_Features.csv"
+    
+    #data_path = r"E:\SDN-DDoS_Traffic_Dataset from Mendeley\SDN-DDoS_With_CIC_Features2.csv"
+
+    #data_path = r"E:\CIC-IoT 2023\CIC-IoT2023 form kaggle\test_Pre_to_binary.csv"
+
+
+    #data_path = r"E:\CIC-IoT 2023\CIC-IoT2023 form kaggle\test_over-sampling.csv"
+
+
+    data_path = r"E:\CIC-IoT 2023\CIC-IoT2023 form kaggle\test_under-sampling.csv"
+
  
 ###########################################################################################
 
